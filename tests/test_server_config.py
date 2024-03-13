@@ -1410,19 +1410,27 @@ class TestServerConfig(tb.QueryTestCase):
         con2 = await self.connect(database=self.con.dbname)
         try:
             # make sure the default state is remembered in a pgcon
+            print('=' * 80)
+            print('set default')
             async with con1.transaction():
                 # `transaction()` is used as a fail-safe to store the state in
                 # pgcon, in case the query itself failed to do so by mistake
                 self.assertEqual(await con1.query_single(query), 0)
 
+            print('=' * 80)
+            print('set 2')
             # update the state in most-likely the same pgcon
             await con2.execute('''
                 CONFIGURE SESSION SET __internal_sess_testvalue := 2;
             ''')
 
+            print('=' * 80)
+            print('check 2')
             # verify the state is successfully updated
             self.assertEqual(await con2.query_single(query), 2)
 
+            print('=' * 80)
+            print('restore default')
             # now switch back to the default state in con1 with the same pgcon
             self.assertEqual(await con1.query_single(query), 0)
         finally:

@@ -190,6 +190,9 @@ async def execute(
     data = None
 
     try:
+        print(be_conn.last_state)
+        print('==?')
+        print(state)
         if be_conn.last_state == state:
             # the current status in be_conn is in sync with dbview, skip the
             # state restoring
