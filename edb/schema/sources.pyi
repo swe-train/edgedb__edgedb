@@ -9,7 +9,11 @@ from edb.schema import objects
 from edb.schema import pointers
 from edb.schema import indexes
 
-class Source(objects.QualifiedObject, indexes.IndexableSubject, objects.Object):
+class Source(
+    objects.QualifiedObject,
+    indexes.IndexableSubject,
+    objects.Object
+):
 
     def get_pointers(
         schema: s_schema.Schema

@@ -11,7 +11,10 @@ from edb.edgeql import qltypes
 from edb.schema import expr
 from edb.schema import types
 
-class Global(objects.QualifiedObject, annos.AnnotationSubject):
+class Global(
+    objects.QualifiedObject,
+    annos.AnnotationSubject
+):
 
     def get_target(
         schema: s_schema.Schema

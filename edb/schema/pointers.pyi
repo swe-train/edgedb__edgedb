@@ -15,7 +15,12 @@ from edb.schema import types
 from edb.schema import referencing
 from edb.schema import constraints
 
-class Pointer(referencing.NamedReferencedInheritingObject, constraints.ConsistencySubject, annos.AnnotationSubject, abc.Pointer):
+class Pointer(
+    referencing.NamedReferencedInheritingObject,
+    constraints.ConsistencySubject,
+    annos.AnnotationSubject,
+    abc.Pointer
+):
 
     def get_source(
         schema: s_schema.Schema

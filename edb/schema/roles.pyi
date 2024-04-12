@@ -8,7 +8,11 @@ from edb import schema as s_schema
 from edb.schema import objects
 from edb.schema import annos
 
-class Role(objects.GlobalObject, objects.InheritingObject, annos.AnnotationSubject):
+class Role(
+    objects.GlobalObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_superuser(
         schema: s_schema.Schema

@@ -10,7 +10,11 @@ from edb.edgeql import qltypes
 from edb.schema import pointers
 from edb.schema import abc
 
-class Link(sources.Source, pointers.Pointer, abc.Link):
+class Link(
+    sources.Source,
+    pointers.Pointer,
+    abc.Link
+):
 
     def get_on_target_delete(
         schema: s_schema.Schema

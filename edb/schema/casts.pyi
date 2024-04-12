@@ -12,7 +12,12 @@ from edb.schema import abc
 from edb.schema import functions
 from edb.schema import types
 
-class Cast(objects.QualifiedObject, annos.AnnotationSubject, functions.VolatilitySubject, abc.Cast):
+class Cast(
+    objects.QualifiedObject,
+    annos.AnnotationSubject,
+    functions.VolatilitySubject,
+    abc.Cast
+):
 
     def get_from_type(
         schema: s_schema.Schema

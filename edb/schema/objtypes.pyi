@@ -15,7 +15,9 @@ from edb.schema import triggers
 from edb.schema import constraints
 from edb.schema import policies
 
-class ObjectTypeRefMixin(objects.Object):
+class ObjectTypeRefMixin(
+    objects.Object
+):
 
     def get_access_policies(
         schema: s_schema.Schema
@@ -25,7 +27,16 @@ class ObjectTypeRefMixin(objects.Object):
         schema: s_schema.Schema
     ) -> objects.ObjectIndexByUnqualifiedName[triggers.Trigger]: ...
 
-class ObjectType(sources.Source, constraints.ConsistencySubject, types.InheritingType, objects.InheritingObject, types.Type, annos.AnnotationSubject, objtypes.ObjectTypeRefMixin, abc.ObjectType):
+class ObjectType(
+    sources.Source,
+    constraints.ConsistencySubject,
+    types.InheritingType,
+    objects.InheritingObject,
+    types.Type,
+    annos.AnnotationSubject,
+    objtypes.ObjectTypeRefMixin,
+    abc.ObjectType
+):
 
     def get_union_of(
         schema: s_schema.Schema

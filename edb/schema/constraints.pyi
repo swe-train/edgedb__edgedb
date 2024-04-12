@@ -14,7 +14,11 @@ from edb.schema import referencing
 from edb.common import checked
 from edb.schema import constraints
 
-class Constraint(referencing.ReferencedInheritingObject, functions.CallableObject, abc.Constraint):
+class Constraint(
+    referencing.ReferencedInheritingObject,
+    functions.CallableObject,
+    abc.Constraint
+):
 
     def get_params(
         schema: s_schema.Schema
@@ -56,7 +60,11 @@ class Constraint(referencing.ReferencedInheritingObject, functions.CallableObjec
         schema: s_schema.Schema
     ) -> bool: ...
 
-class ConsistencySubject(objects.QualifiedObject, objects.InheritingObject, annos.AnnotationSubject):
+class ConsistencySubject(
+    objects.QualifiedObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_constraints(
         schema: s_schema.Schema

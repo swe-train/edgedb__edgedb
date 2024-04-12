@@ -9,7 +9,9 @@ from edb.schema import objects
 from edb.schema import referencing
 from edb.schema import annos
 
-class AnnotationValue(referencing.ReferencedInheritingObject):
+class AnnotationValue(
+    referencing.ReferencedInheritingObject
+):
 
     def get_subject(
         schema: s_schema.Schema
@@ -23,13 +25,19 @@ class AnnotationValue(referencing.ReferencedInheritingObject):
         schema: s_schema.Schema
     ) -> str: ...
 
-class AnnotationSubject(objects.Object):
+class AnnotationSubject(
+    objects.Object
+):
 
     def get_annotations(
         schema: s_schema.Schema
     ) -> objects.ObjectIndexByShortname[annos.AnnotationValue]: ...
 
-class Annotation(objects.QualifiedObject, objects.InheritingObject, annos.AnnotationSubject):
+class Annotation(
+    objects.QualifiedObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_inheritable(
         schema: s_schema.Schema

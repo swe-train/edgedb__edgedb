@@ -8,7 +8,10 @@ from edb import schema as s_schema
 from edb.schema import objects
 from edb.schema import abc
 
-class Migration(objects.Object, abc.Migration):
+class Migration(
+    objects.Object,
+    abc.Migration
+):
 
     def get_parents(
         schema: s_schema.Schema

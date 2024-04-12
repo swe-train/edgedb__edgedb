@@ -8,7 +8,9 @@ from edb import schema as s_schema
 from edb.schema import objects
 from edb.schema import name
 
-class FutureBehavior(objects.Object):
+class FutureBehavior(
+    objects.Object
+):
 
     def get_name(
         schema: s_schema.Schema

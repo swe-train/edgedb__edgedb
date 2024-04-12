@@ -10,7 +10,10 @@ from edb.schema import expr
 from edb.edgeql import qltypes
 from edb.schema import referencing
 
-class Trigger(referencing.NamedReferencedInheritingObject, objects.InheritingObject):
+class Trigger(
+    referencing.NamedReferencedInheritingObject,
+    objects.InheritingObject
+):
 
     def get_timing(
         schema: s_schema.Schema

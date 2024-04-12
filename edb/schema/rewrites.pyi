@@ -11,7 +11,11 @@ from edb.edgeql import qltypes
 from edb.schema import expr
 from edb.schema import referencing
 
-class Rewrite(referencing.NamedReferencedInheritingObject, objects.InheritingObject, annos.AnnotationSubject):
+class Rewrite(
+    referencing.NamedReferencedInheritingObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_kind(
         schema: s_schema.Schema

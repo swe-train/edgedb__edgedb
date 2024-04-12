@@ -12,7 +12,11 @@ from edb.edgeql import ast
 from edb.schema import functions
 from edb.common import checked
 
-class Operator(functions.CallableObject, functions.VolatilitySubject, abc.Operator):
+class Operator(
+    functions.CallableObject,
+    functions.VolatilitySubject,
+    abc.Operator
+):
 
     def get_operator_kind(
         schema: s_schema.Schema

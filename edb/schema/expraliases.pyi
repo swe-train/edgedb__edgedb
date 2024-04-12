@@ -10,7 +10,10 @@ from edb.schema import expr
 from edb.schema import annos
 from edb.schema import types
 
-class Alias(objects.QualifiedObject, annos.AnnotationSubject):
+class Alias(
+    objects.QualifiedObject,
+    annos.AnnotationSubject
+):
 
     def get_expr(
         schema: s_schema.Schema

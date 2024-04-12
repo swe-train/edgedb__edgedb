@@ -8,13 +8,18 @@ from edb import schema as s_schema
 from edb.schema import objects
 from edb.schema import referencing
 
-class ReferencedObject(objects.DerivableObject):
+class ReferencedObject(
+    objects.DerivableObject
+):
 
     def get_owned(
         schema: s_schema.Schema
     ) -> bool: ...
 
-class ReferencedInheritingObject(objects.DerivableInheritingObject, referencing.ReferencedObject):
+class ReferencedInheritingObject(
+    objects.DerivableInheritingObject,
+    referencing.ReferencedObject
+):
 
     def get_declared_overloaded(
         schema: s_schema.Schema

@@ -14,7 +14,11 @@ from edb.schema import referencing
 from edb.schema import indexes
 from edb.common import checked
 
-class Index(referencing.ReferencedInheritingObject, objects.InheritingObject, annos.AnnotationSubject):
+class Index(
+    referencing.ReferencedInheritingObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_bases(
         schema: s_schema.Schema
@@ -52,7 +56,9 @@ class Index(referencing.ReferencedInheritingObject, objects.InheritingObject, an
         schema: s_schema.Schema
     ) -> bool: ...
 
-class IndexableSubject(objects.InheritingObject):
+class IndexableSubject(
+    objects.InheritingObject
+):
 
     def get_indexes(
         schema: s_schema.Schema

@@ -11,7 +11,10 @@ from edb.schema import extensions
 from edb.common import checked
 from edb.common import verutils
 
-class ExtensionPackage(objects.GlobalObject, annos.AnnotationSubject):
+class ExtensionPackage(
+    objects.GlobalObject,
+    annos.AnnotationSubject
+):
 
     def get_version(
         schema: s_schema.Schema
@@ -33,7 +36,9 @@ class ExtensionPackage(objects.GlobalObject, annos.AnnotationSubject):
         schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
-class Extension(objects.Object):
+class Extension(
+    objects.Object
+):
 
     def get_package(
         schema: s_schema.Schema

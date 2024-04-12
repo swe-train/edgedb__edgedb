@@ -16,7 +16,11 @@ from edb.schema import functions
 from edb.schema import types
 from edb.schema import globals
 
-class Parameter(objects.ObjectFragment, objects.Object, functions.ParameterLike):
+class Parameter(
+    objects.ObjectFragment,
+    objects.Object,
+    functions.ParameterLike
+):
 
     def get_num(
         schema: s_schema.Schema
@@ -38,13 +42,19 @@ class Parameter(objects.ObjectFragment, objects.Object, functions.ParameterLike)
         schema: s_schema.Schema
     ) -> qltypes.ParameterKind: ...
 
-class VolatilitySubject(objects.Object):
+class VolatilitySubject(
+    objects.Object
+):
 
     def get_volatility(
         schema: s_schema.Schema
     ) -> qltypes.Volatility: ...
 
-class CallableObject(objects.QualifiedObject, annos.AnnotationSubject, functions.CallableLike):
+class CallableObject(
+    objects.QualifiedObject,
+    annos.AnnotationSubject,
+    functions.CallableLike
+):
 
     def get_params(
         schema: s_schema.Schema
@@ -70,7 +80,11 @@ class CallableObject(objects.QualifiedObject, annos.AnnotationSubject, functions
         schema: s_schema.Schema
     ) -> bool: ...
 
-class Function(functions.CallableObject, functions.VolatilitySubject, abc.Function):
+class Function(
+    functions.CallableObject,
+    functions.VolatilitySubject,
+    abc.Function
+):
 
     def get_used_globals(
         schema: s_schema.Schema

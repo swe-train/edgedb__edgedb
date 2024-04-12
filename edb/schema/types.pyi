@@ -12,7 +12,11 @@ from edb.schema import expr
 from edb.schema import types
 from edb.common import checked
 
-class Type(objects.SubclassableObject, annos.AnnotationSubject, abc.Type):
+class Type(
+    objects.SubclassableObject,
+    annos.AnnotationSubject,
+    abc.Type
+):
 
     def get_expr(
         schema: s_schema.Schema
@@ -46,13 +50,19 @@ class Type(objects.SubclassableObject, annos.AnnotationSubject, abc.Type):
         schema: s_schema.Schema
     ) -> bool: ...
 
-class Collection(types.Type, abc.Collection):
+class Collection(
+    types.Type,
+    abc.Collection
+):
 
     def get_is_persistent(
         schema: s_schema.Schema
     ) -> bool: ...
 
-class Array(types.Collection, abc.Array):
+class Array(
+    types.Collection,
+    abc.Array
+):
 
     def get_element_type(
         schema: s_schema.Schema
@@ -62,7 +72,10 @@ class Array(types.Collection, abc.Array):
         schema: s_schema.Schema
     ) -> checked.FrozenCheckedList[int]: ...
 
-class Tuple(types.Collection, abc.Tuple):
+class Tuple(
+    types.Collection,
+    abc.Tuple
+):
 
     def get_named(
         schema: s_schema.Schema
@@ -72,13 +85,19 @@ class Tuple(types.Collection, abc.Tuple):
         schema: s_schema.Schema
     ) -> objects.ObjectDict[str, types.Type]: ...
 
-class Range(types.Collection, abc.Range):
+class Range(
+    types.Collection,
+    abc.Range
+):
 
     def get_element_type(
         schema: s_schema.Schema
     ) -> types.Type: ...
 
-class MultiRange(types.Collection, abc.MultiRange):
+class MultiRange(
+    types.Collection,
+    abc.MultiRange
+):
 
     def get_element_type(
         schema: s_schema.Schema

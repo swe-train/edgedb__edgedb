@@ -11,7 +11,11 @@ from edb.edgeql import qltypes
 from edb.schema import expr
 from edb.schema import referencing
 
-class AccessPolicy(referencing.NamedReferencedInheritingObject, objects.InheritingObject, annos.AnnotationSubject):
+class AccessPolicy(
+    referencing.NamedReferencedInheritingObject,
+    objects.InheritingObject,
+    annos.AnnotationSubject
+):
 
     def get_condition(
         schema: s_schema.Schema

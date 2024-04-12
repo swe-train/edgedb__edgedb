@@ -12,7 +12,10 @@ from edb.schema import abc
 from edb.schema import objects
 from edb.common import checked
 
-class Object(abc.Object, objects.ObjectContainer):
+class Object(
+    abc.Object,
+    objects.ObjectContainer
+):
 
     def get_id(
         schema: s_schema.Schema
@@ -38,19 +41,25 @@ class Object(abc.Object, objects.ObjectContainer):
         schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
-class QualifiedObject(objects.Object):
+class QualifiedObject(
+    objects.Object
+):
 
     def get_name(
         schema: s_schema.Schema
     ) -> name.QualName: ...
 
-class SubclassableObject(objects.Object):
+class SubclassableObject(
+    objects.Object
+):
 
     def get_abstract(
         schema: s_schema.Schema
     ) -> bool: ...
 
-class InheritingObject(objects.SubclassableObject):
+class InheritingObject(
+    objects.SubclassableObject
+):
 
     def get_bases(
         schema: s_schema.Schema

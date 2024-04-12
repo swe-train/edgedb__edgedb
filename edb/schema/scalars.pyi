@@ -11,7 +11,11 @@ from edb.schema import types
 from edb.common import checked
 from edb.schema import constraints
 
-class ScalarType(types.InheritingType, constraints.ConsistencySubject, abc.ScalarType):
+class ScalarType(
+    types.InheritingType,
+    constraints.ConsistencySubject,
+    abc.ScalarType
+):
 
     def get_default(
         schema: s_schema.Schema

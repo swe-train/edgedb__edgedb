@@ -68,12 +68,12 @@ def gen_for_module(mod_name: str, mod: types.ModuleType):
             f.write(f'import {parts[-1]}\n')
 
     for cls in schema_object_classes:
-        
-        bases = ', '.join((
-            codegen_ty(base) for base in cls.__bases__
-        ))
 
-        f.write(f'\nclass {cls.__name__}({bases}):\n')
+        bases = ','.join(
+            ('\n    ' + codegen_ty(base) for base in cls.__bases__)
+        )
+
+        f.write(f'\nclass {cls.__name__}({bases}\n):\n')
 
         fa = '{}.{}_fields'.format(cls.__module__, cls.__name__)
         my_fields = getattr(cls, fa)
