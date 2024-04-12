@@ -17,25 +17,25 @@ class Global(
 ):
 
     def get_target(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_required(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_cardinality(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.SchemaCardinality: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_default(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_created_types(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet[types.Type]: ...

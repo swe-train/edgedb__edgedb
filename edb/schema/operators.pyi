@@ -19,45 +19,45 @@ class Operator(
 ):
 
     def get_operator_kind(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.OperatorKind: ...
 
     def get_language(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> ast.Language: ...
 
     def get_from_operator(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.CheckedList[str]: ...
 
     def get_from_function(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.CheckedList[str]: ...
 
     def get_from_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_force_return_cast(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_code(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_derivative_of(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.QualName: ...
 
     def get_commutator(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.QualName: ...
 
     def get_negator(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.QualName: ...
 
     def get_recursive(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

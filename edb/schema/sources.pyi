@@ -16,5 +16,5 @@ class Source(
 ):
 
     def get_pointers(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByUnqualifiedName[pointers.Pointer]: ...

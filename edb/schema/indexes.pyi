@@ -21,39 +21,39 @@ class Index(
 ):
 
     def get_bases(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList['Index']: ...
 
     def get_subject(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.Object: ...
 
     def get_params(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList[functions.Parameter]: ...
 
     def get_code(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_kwargs(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.CheckedDict[str, expr.Expression]: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_except_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_deferrability(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.IndexDeferrability: ...
 
     def get_deferred(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class IndexableSubject(
@@ -61,5 +61,5 @@ class IndexableSubject(
 ):
 
     def get_indexes(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByFullname[indexes.Index]: ...

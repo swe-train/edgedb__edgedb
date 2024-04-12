@@ -16,13 +16,13 @@ class Alias(
 ):
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_created_types(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet[types.Type]: ...

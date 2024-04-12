@@ -13,5 +13,5 @@ class FutureBehavior(
 ):
 
     def get_name(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.Name: ...

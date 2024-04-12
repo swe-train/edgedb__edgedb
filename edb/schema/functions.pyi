@@ -23,23 +23,23 @@ class Parameter(
 ):
 
     def get_num(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> int: ...
 
     def get_default(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_typemod(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.TypeModifier: ...
 
     def get_kind(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.ParameterKind: ...
 
 class VolatilitySubject(
@@ -47,7 +47,7 @@ class VolatilitySubject(
 ):
 
     def get_volatility(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.Volatility: ...
 
 class CallableObject(
@@ -57,27 +57,27 @@ class CallableObject(
 ):
 
     def get_params(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList[functions.Parameter]: ...
 
     def get_return_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_return_typemod(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.TypeModifier: ...
 
     def get_abstract(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_impl_is_strict(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_prefer_subquery_args(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class Function(
@@ -87,65 +87,65 @@ class Function(
 ):
 
     def get_used_globals(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet[globals.Global]: ...
 
     def get_backend_name(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> uuid.UUID: ...
 
     def get_code(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_nativecode(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_language(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> ast.Language: ...
 
     def get_reflected_language(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_from_function(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_from_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_force_return_cast(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_sql_func_has_out_params(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_error_on_null_result(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_preserves_optionality(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_preserves_upper_cardinality(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_initial_value(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_has_dml(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_fallback(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

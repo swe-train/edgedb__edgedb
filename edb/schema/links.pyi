@@ -17,9 +17,9 @@ class Link(
 ):
 
     def get_on_target_delete(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.LinkTargetDeleteAction: ...
 
     def get_on_source_delete(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.LinkSourceDeleteAction: ...

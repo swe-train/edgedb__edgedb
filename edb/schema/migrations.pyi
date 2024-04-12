@@ -14,17 +14,17 @@ class Migration(
 ):
 
     def get_parents(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList['Migration']: ...
 
     def get_message(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_generated_by(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_script(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...

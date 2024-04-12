@@ -14,15 +14,15 @@ class AnnotationValue(
 ):
 
     def get_subject(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.Object: ...
 
     def get_annotation(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> annos.Annotation: ...
 
     def get_value(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
 class AnnotationSubject(
@@ -30,7 +30,7 @@ class AnnotationSubject(
 ):
 
     def get_annotations(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByShortname[annos.AnnotationValue]: ...
 
 class Annotation(
@@ -40,5 +40,5 @@ class Annotation(
 ):
 
     def get_inheritable(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

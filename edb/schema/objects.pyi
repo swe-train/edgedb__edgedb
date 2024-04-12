@@ -18,27 +18,27 @@ class Object(
 ):
 
     def get_id(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> uuid.UUID: ...
 
     def get_internal(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_sourcectx(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> span.Span: ...
 
     def get_name(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.Name: ...
 
     def get_builtin(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_computed_fields(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
 class QualifiedObject(
@@ -46,7 +46,7 @@ class QualifiedObject(
 ):
 
     def get_name(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> name.QualName: ...
 
 class SubclassableObject(
@@ -54,7 +54,7 @@ class SubclassableObject(
 ):
 
     def get_abstract(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class InheritingObject(
@@ -62,17 +62,17 @@ class InheritingObject(
 ):
 
     def get_bases(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList['InheritingObject']: ...
 
     def get_ancestors(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList['InheritingObject']: ...
 
     def get_inherited_fields(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
     def get_is_derived(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

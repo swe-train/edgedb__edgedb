@@ -21,43 +21,43 @@ class Constraint(
 ):
 
     def get_params(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList[functions.Parameter]: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_subjectexpr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_finalexpr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_except_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_subject(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.Object: ...
 
     def get_args(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedList[expr.Expression]: ...
 
     def get_delegated(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_errmessage(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_is_aggregate(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class ConsistencySubject(
@@ -67,5 +67,5 @@ class ConsistencySubject(
 ):
 
     def get_constraints(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> constraints.ObjectIndexByConstraintName[constraints.Constraint]: ...

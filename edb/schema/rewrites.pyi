@@ -18,13 +18,13 @@ class Rewrite(
 ):
 
     def get_kind(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.RewriteKind: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_subject(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.InheritingObject: ...

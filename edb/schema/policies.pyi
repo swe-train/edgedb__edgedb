@@ -18,29 +18,29 @@ class AccessPolicy(
 ):
 
     def get_condition(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_action(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.AccessPolicyAction: ...
 
     def get_access_kinds(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.MultiPropSet[qltypes.AccessKind]: ...
 
     def get_subject(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.InheritingObject: ...
 
     def get_errmessage(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_owned(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

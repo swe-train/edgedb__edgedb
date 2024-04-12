@@ -15,13 +15,13 @@ class Role(
 ):
 
     def get_superuser(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_password(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_password_hash(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...

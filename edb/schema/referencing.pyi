@@ -13,7 +13,7 @@ class ReferencedObject(
 ):
 
     def get_owned(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class ReferencedInheritingObject(
@@ -22,5 +22,5 @@ class ReferencedInheritingObject(
 ):
 
     def get_declared_overloaded(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

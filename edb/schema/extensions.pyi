@@ -17,23 +17,23 @@ class ExtensionPackage(
 ):
 
     def get_version(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> verutils.Version: ...
 
     def get_script(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_sql_extensions(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
     def get_ext_module(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_dependencies(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedSet[str]: ...
 
 class Extension(
@@ -41,9 +41,9 @@ class Extension(
 ):
 
     def get_package(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> extensions.ExtensionPackage: ...
 
     def get_dependencies(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectList['Extension']: ...

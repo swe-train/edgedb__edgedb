@@ -20,37 +20,37 @@ class Cast(
 ):
 
     def get_from_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_to_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_allow_implicit(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_allow_assignment(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_language(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> ast.Language: ...
 
     def get_from_function(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_from_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_from_cast(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_code(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...

@@ -13,5 +13,5 @@ class BaseSchemaVersion(
 ):
 
     def get_version(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> uuid.UUID: ...

@@ -85,7 +85,7 @@ def gen_for_module(mod_name: str, mod: types.ModuleType):
             f.write(
                 '\n'
                 f'    def {getter_name}(\n'
-                f'        schema: s_schema.Schema\n'
+                f'        self, schema: s_schema.Schema\n'
                 f'    ) -> {ty}: ...\n'
             )
 

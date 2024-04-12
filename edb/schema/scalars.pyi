@@ -18,25 +18,25 @@ class ScalarType(
 ):
 
     def get_default(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_enum_values(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedList[str]: ...
 
     def get_sql_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_sql_type_scheme(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> str: ...
 
     def get_num_params(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> int: ...
 
     def get_arg_values(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedList[str]: ...

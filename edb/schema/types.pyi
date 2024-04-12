@@ -19,35 +19,35 @@ class Type(
 ):
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_expr_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.ExprType: ...
 
     def get_from_alias(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_from_global(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_alias_is_persistent(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_rptr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.Object: ...
 
     def get_backend_id(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> int: ...
 
     def get_transient(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class Collection(
@@ -56,7 +56,7 @@ class Collection(
 ):
 
     def get_is_persistent(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
 class Array(
@@ -65,11 +65,11 @@ class Array(
 ):
 
     def get_element_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_dimensions(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> checked.FrozenCheckedList[int]: ...
 
 class Tuple(
@@ -78,11 +78,11 @@ class Tuple(
 ):
 
     def get_named(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_element_types(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectDict[str, types.Type]: ...
 
 class Range(
@@ -91,7 +91,7 @@ class Range(
 ):
 
     def get_element_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
 class MultiRange(
@@ -100,5 +100,5 @@ class MultiRange(
 ):
 
     def get_element_type(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...

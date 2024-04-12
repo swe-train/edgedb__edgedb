@@ -20,11 +20,11 @@ class ObjectTypeRefMixin(
 ):
 
     def get_access_policies(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByUnqualifiedName[policies.AccessPolicy]: ...
 
     def get_triggers(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByUnqualifiedName[triggers.Trigger]: ...
 
 class ObjectType(
@@ -39,13 +39,13 @@ class ObjectType(
 ):
 
     def get_union_of(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet['ObjectType']: ...
 
     def get_intersection_of(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet['ObjectType']: ...
 
     def get_is_opaque_union(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...

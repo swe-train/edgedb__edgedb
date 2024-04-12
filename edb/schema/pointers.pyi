@@ -23,69 +23,69 @@ class Pointer(
 ):
 
     def get_source(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.InheritingObject: ...
 
     def get_target(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> types.Type: ...
 
     def get_required(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_readonly(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_secret(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_protected(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_computable(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_from_alias(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_defined_here(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_expr(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_default(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> expr.Expression: ...
 
     def get_cardinality(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> qltypes.SchemaCardinality: ...
 
     def get_union_of(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet['Pointer']: ...
 
     def get_intersection_of(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectSet['Pointer']: ...
 
     def get_computed_link_alias_is_backward(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> bool: ...
 
     def get_computed_link_alias(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.Object: ...
 
     def get_rewrites(
-        schema: s_schema.Schema
+        self, schema: s_schema.Schema
     ) -> objects.ObjectIndexByUnqualifiedName[rewrites.Rewrite]: ...
