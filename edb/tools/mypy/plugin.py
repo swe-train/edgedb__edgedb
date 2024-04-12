@@ -69,12 +69,6 @@ class EDBPlugin(mypy_plugin.Plugin):
 
         if any(c.fullname in SCHEMA_BASE_METACLASSES for c in mcls_mro):
             transformers.append(
-                SchemaClassTransformer(
-                    ctx,
-                    field_makers={'edb.schema.objects.SchemaField'},
-                )
-            )
-            transformers.append(
                 StructTransformer(
                     ctx,
                     field_makers={'edb.schema.objects.Field'},
