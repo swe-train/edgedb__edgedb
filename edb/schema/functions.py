@@ -62,6 +62,8 @@ from . import objects as so
 from . import referencing
 from . import types as s_types
 from . import utils
+from .generated import functions as sg_functions
+from .generated import objects as sg_objects
 
 
 if TYPE_CHECKING:
@@ -151,32 +153,8 @@ def param_is_inherited(
     return qualname != param_name.name
 
 
-class ParameterLike(s_abc.Parameter):
-
-    def get_parameter_name(self, schema: s_schema.Schema) -> str:
-        raise NotImplementedError
-
-    def get_name(self, schema: s_schema.Schema) -> sn.Name:
-        raise NotImplementedError
-
-    def get_kind(self, _: s_schema.Schema) -> ft.ParameterKind:
-        raise NotImplementedError
-
-    def get_default(self, _: s_schema.Schema) -> Optional[s_expr.Expression]:
-        raise NotImplementedError
-
-    def get_type(self, _: s_schema.Schema) -> s_types.Type:
-        raise NotImplementedError
-
-    def get_typemod(self, _: s_schema.Schema) -> ft.TypeModifier:
-        raise NotImplementedError
-
-    def as_str(self, schema: s_schema.Schema) -> str:
-        raise NotImplementedError
-
-
 # Non-schema description of a parameter.
-class ParameterDesc(ParameterLike):
+class ParameterDesc(s_abc.Parameter):
 
     num: int
     name: sn.Name
@@ -366,7 +344,8 @@ def make_func_param(
 class Parameter(
     so.ObjectFragment,
     so.Object,  # Help reflection figure out the right db MRO
-    ParameterLike,
+    sg_functions.ParameterMixin,
+    s_abc.Parameter,
     qlkind=ft.SchemaObjectClass.PARAMETER,
     data_safe=True,
 ):
@@ -488,6 +467,8 @@ class Parameter(
             default=default.parse() if default else None,
         )
 
+
+ParameterLike = ParameterDesc | Parameter
 
 class CallableCommandContext(sd.ObjectCommandContext['CallableObject'],
                              s_anno.AnnotationSubjectCommandContext):
@@ -756,7 +737,7 @@ class FuncParameterList(so.ObjectList[Parameter], ParameterLikeList):
         return 1.0
 
 
-class VolatilitySubject(so.Object):
+class VolatilitySubject(so.Object, sg_functions.VolatilitySubjectMixin):
 
     volatility = so.SchemaField(
         ft.Volatility, default=ft.Volatility.Volatile,
@@ -794,6 +775,7 @@ CallableObjectT = TypeVar('CallableObjectT', bound='CallableObject')
 class CallableObject(
     so.QualifiedObject,
     s_anno.AnnotationSubject,
+    sg_functions.CallableObjectMixin,
     CallableLike,
 ):
 
@@ -1229,6 +1211,7 @@ class Function(
     CallableObject,
     VolatilitySubject,
     s_abc.Function,
+    sg_functions.FunctionMixin,
     qlkind=ft.SchemaObjectClass.FUNCTION,
     data_safe=True,
 ):

@@ -39,6 +39,7 @@ from . import sources
 from . import types as s_types
 from . import utils
 from . import expr as s_expr
+from .generated import properties as sg_properties
 
 if TYPE_CHECKING:
     from . import schema as s_schema
@@ -47,6 +48,7 @@ if TYPE_CHECKING:
 class Property(
     pointers.Pointer,
     s_abc.Property,
+    sg_properties.PropertyMixin,
     qlkind=qltypes.SchemaObjectClass.PROPERTY,
     data_safe=False,
 ):

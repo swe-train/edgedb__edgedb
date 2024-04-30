@@ -30,6 +30,7 @@ from . import delta as sd
 from . import name as sn
 from . import objects as so
 from . import schema as s_schema
+from .generated import modules as sg_modules
 
 RESERVED_MODULE_NAMES = {
     'super',
@@ -39,6 +40,7 @@ RESERVED_MODULE_NAMES = {
 class Module(
     s_anno.AnnotationSubject,
     so.Object,  # Help reflection figure out the right db MRO
+    sg_modules.ModuleMixin,
     qlkind=qltypes.SchemaObjectClass.MODULE,
     data_safe=False,
 ):

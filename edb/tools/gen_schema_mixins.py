@@ -9,7 +9,7 @@ from edb.common import typing_inspect
 from edb.tools.edb import edbcommands
 
 
-@edbcommands.command("gen-schema-types")
+@edbcommands.command("gen-schema-mixins")
 def main() -> None:
 
     for name, item in schema.__dict__.items():
@@ -31,31 +31,31 @@ def gen_for_module(mod_name: str, mod: types.ModuleType):
         fa = '{}.{}_fields'.format(cls.__module__, cls.__name__)
         my_fields = getattr(cls, fa)
 
-        if len(my_fields) == 0:
-            continue
+        # if len(my_fields) == 0:
+            # continue
 
         for field in my_fields.values():
-            collect_imports(field.type, imports)
-
-        for base in cls.__bases__:
-            collect_imports(base, imports)
+            imports.update(collect_imports(field.type, mod.__name__))
 
         schema_object_classes.append(cls)
     if not schema_object_classes:
         return
 
-    f = open(f'edb/schema/{mod_name}.pyi', 'w')
+    f = open(f'edb/schema/generated/{mod_name}.py', 'w')
 
     f.write(
         textwrap.dedent(
             '''\
             # DO NOT EDIT. This file was generated with:
             #
-            # $ gen-schema-types
+            # $ gen-schema-mixins
 
             """Type definitions for generated methods on schema classes"""
 
-            from edb import schema as s_schema
+            from typing import cast, TYPE_CHECKING
+            if TYPE_CHECKING:
+                from edb.schema import schema as s_schema
+            from edb.schema import orm as s_orm
             '''
         )
     )
@@ -68,43 +68,54 @@ def gen_for_module(mod_name: str, mod: types.ModuleType):
             f.write(f'import {parts[-1]}\n')
 
     for cls in schema_object_classes:
-
-        bases = ','.join(
-            ('\n    ' + codegen_ty(base) for base in cls.__bases__)
-        )
-
-        f.write(f'\nclass {cls.__name__}({bases}\n):\n')
+        f.write(f'\n\nclass {cls.__name__}Mixin:\n')
 
         fa = '{}.{}_fields'.format(cls.__module__, cls.__name__)
         my_fields = getattr(cls, fa)
         for field in my_fields.values():
-            getter_name = f'get_{field.name}'
+            fn = field.name
 
-            ty = codegen_ty(field.type)
+            ty = codegen_ty(field.type, mod.__name__)
 
             f.write(
                 '\n'
-                f'    def {getter_name}(\n'
-                f'        self, schema: s_schema.Schema\n'
-                f'    ) -> {ty}: ...\n'
+                f'    def get_{fn}(\n'
+                f'        self, schema: \'s_schema.Schema\'\n'
+                f'    ) -> \'{ty}\':\n'
+                f'        val = s_orm.get_field_value(self, schema, \'{fn}\')\n'
+                f'        return cast({ty}, val)\n'
             )
+        if len(my_fields) == 0:
+            f.write('    pass\n')
 
 
-def collect_imports(ty: type, imports: typing.Set[str]):
+
+def collect_imports(ty: type, current_module: str) -> typing.Set[str]:
+    r = set()
+
+    if isinstance(ty, str):
+        r.add(current_module)
+        return r
+
     if not isinstance(ty, type):
-        return
+        return r
 
     if ty.__module__ == 'builtins':
-        return
+        return r
     if typing_inspect.is_generic_type(ty):
-        imports.add(ty.__base__.__module__)
+        r.add(ty.__base__.__module__)
         for arg in ty.orig_args:
-            collect_imports(arg, imports)
-        return
-    imports.add(ty.__module__)
+            r.update(collect_imports(arg, current_module))
+        return r
+    r.add(ty.__module__)
+    return r
 
 
-def codegen_ty(ty: type):
+def codegen_ty(ty: type, current_module: str):
+    if isinstance(ty, str):
+        mod_name = current_module.split('.')[-1]
+        return f"{mod_name}.{ty}"
+
     if not isinstance(ty, type):
         return f'\'{ty}\''
 
@@ -117,7 +128,9 @@ def codegen_ty(ty: type):
         base_name = base_name.split('[')[0]
         base = f"{mod_name}.{base_name}"
 
-        args = ', '.join((codegen_ty(arg) for arg in ty.orig_args))
+        args = ', '.join(
+            (codegen_ty(arg, current_module) for arg in ty.orig_args)
+        )
         return f'{base}[{args}]'
 
     # base case

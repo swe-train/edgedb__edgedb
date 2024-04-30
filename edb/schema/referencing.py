@@ -47,6 +47,7 @@ from . import objects as so
 from . import schema as s_schema
 from . import name as sn
 from . import utils
+from .generated import referencing as sg_referencing
 
 
 ReferencedT = TypeVar('ReferencedT', bound='ReferencedObject')
@@ -56,7 +57,9 @@ ReferencedInheritingObjectT = TypeVar('ReferencedInheritingObjectT',
 
 # Q: There are no ReferencedObjects that aren't ReferencedInheritingObject;
 # should we merge them?
-class ReferencedObject(so.DerivableObject):
+class ReferencedObject(
+    so.DerivableObject, sg_referencing.ReferencedObjectMixin
+):
 
     #: True if the object has an explicit definition and is not
     #: purely inherited.
@@ -88,8 +91,8 @@ class ReferencedObject(so.DerivableObject):
 
     def get_subject(self, schema: s_schema.Schema) -> Optional[so.Object]:
         # NB: classes that inherit ReferencedObject define a `get_subject`
-        # method dynamically, with `subject = SchemaField`
-        raise NotImplementedError
+        # method dynamically, with `subjet = SchemaField`
+        raise NotImplementedError(f'get_subject() for {self}')
 
     def get_referrer(self, schema: s_schema.Schema) -> Optional[so.Object]:
         return self.get_subject(schema)
@@ -179,6 +182,7 @@ class ReferencedObject(so.DerivableObject):
 class ReferencedInheritingObject(
     so.DerivableInheritingObject,
     ReferencedObject,
+    sg_referencing.ReferencedInheritingObjectMixin,
 ):
 
     # Indicates that the object has been declared as
@@ -1624,6 +1628,7 @@ class AlterOwned(
 
 class NamedReferencedInheritingObject(
     ReferencedInheritingObject,
+    sg_referencing.NamedReferencedInheritingObjectMixin,
 ):
     """A referenced inheriting object that has an explicit local name.
 

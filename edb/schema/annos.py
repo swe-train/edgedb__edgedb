@@ -43,12 +43,14 @@ from . import name as sn
 from . import referencing
 from . import objects as so
 from . import utils
+from .generated import annos as sg_annos
 
 if TYPE_CHECKING:
     from . import schema as s_schema
 
 
 class AnnotationValue(
+    sg_annos.AnnotationValueMixin,
     referencing.ReferencedInheritingObject,
     qlkind=qltypes.SchemaObjectClass.ANNOTATION,
     reflection=so.ReflectionMethod.AS_LINK,
@@ -101,7 +103,7 @@ class AnnotationValue(
 T = TypeVar("T")
 
 
-class AnnotationSubject(so.Object):
+class AnnotationSubject(so.Object, sg_annos.AnnotationSubjectMixin):
 
     annotations_refs = so.RefDict(
         attr='annotations',
@@ -180,6 +182,7 @@ class Annotation(
     so.QualifiedObject,
     so.InheritingObject,
     AnnotationSubject,
+    sg_annos.AnnotationMixin,
     qlkind=qltypes.SchemaObjectClass.ANNOTATION,
     data_safe=True,
 ):

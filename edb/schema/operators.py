@@ -32,6 +32,7 @@ from . import functions as s_func
 from . import name as sn
 from . import objects as so
 from . import utils
+from .generated import operators as sg_operators
 
 if TYPE_CHECKING:
     from edb.schema import schema as s_schema
@@ -41,6 +42,7 @@ class Operator(
     s_func.CallableObject,
     s_func.VolatilitySubject,
     s_abc.Operator,
+    sg_operators.OperatorMixin,
     qlkind=ft.SchemaObjectClass.OPERATOR,
     data_safe=True,
 ):

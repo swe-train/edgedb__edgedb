@@ -36,6 +36,7 @@ from . import objects as so
 from . import types as s_types
 from . import schema as s_schema
 from . import utils
+from .generated import casts as sg_casts
 
 
 _NOT_REACHABLE = 10000000
@@ -210,6 +211,7 @@ class Cast(
     s_anno.AnnotationSubject,
     s_func.VolatilitySubject,
     s_abc.Cast,
+    sg_casts.CastMixin,
     qlkind=qltypes.SchemaObjectClass.CAST,
     data_safe=True,
 ):

@@ -29,6 +29,7 @@ from . import delta as sd
 from . import name as sn
 from . import objects as so
 from . import types as s_types
+from .generated import pseudo as sg_pseudo
 
 if TYPE_CHECKING:
     from . import schema as s_schema
@@ -40,6 +41,7 @@ PseudoType_T = TypeVar("PseudoType_T", bound="PseudoType")
 class PseudoType(
     so.InheritingObject,
     s_types.Type,
+    sg_pseudo.PseudoTypeMixin,
     qlkind=qltypes.SchemaObjectClass.PSEUDO_TYPE,
 ):
 

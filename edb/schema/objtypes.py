@@ -46,9 +46,10 @@ from . import triggers
 from . import types as s_types
 from . import unknown_pointers
 from . import utils
+from .generated import objtypes as sg_objtypes
 
 
-class ObjectTypeRefMixin(so.Object):
+class ObjectTypeRefMixin(so.Object, sg_objtypes.ObjectTypeRefMixinMixin):
     # We stick access policies and triggers in their own class as a
     # hack, to allow us to ensure that access_policies comes later in
     # the refdicts list than pointers does, so that pointers are
@@ -81,6 +82,7 @@ class ObjectType(
     sources.Source,
     constraints.ConsistencySubject,
     s_types.InheritingType,
+    sg_objtypes.ObjectTypeMixin,
 
     so.InheritingObject,  # Help reflection figure out the right db MRO
     s_types.Type,  # Help reflection figure out the right db MRO

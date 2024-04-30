@@ -36,6 +36,7 @@ from . import name as sn
 from . import objects as so
 from . import types as s_types
 from . import utils
+from .generated import globals as sg_globals
 
 if TYPE_CHECKING:
     from edb.schema import schema as s_schema
@@ -44,6 +45,7 @@ if TYPE_CHECKING:
 class Global(
     so.QualifiedObject,
     s_anno.AnnotationSubject,
+    sg_globals.GlobalMixin,
     qlkind=qltypes.SchemaObjectClass.GLOBAL,
     data_safe=True,
 ):
